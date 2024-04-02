@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="Entry">Enter date in format (DD/MM/YYYY)</label><br><br>
+    <input type="text" id="dateEntry"><br><br>
+    <button onclick="DateCheck()">Click to Check</button>
+    <script>
+        function DateCheck(){
+            let entry= document.getElementById("dateEntry").value
+            let entered=new Date(entry.split("/").reverse().join("-"));
+            entered.setHours(0,0,0,0)
+            let date = new Date();
+            date.setHours(0,0,0,0)
+            let diff=entered-date
+            if(diff<0)
+            alert("Before date")
+            else if(diff>0)
+            alert("After date")
+            else
+            alert("Today")
+            console.log(diff);
+        }
+
+    </script>
+</body>
+</html>
