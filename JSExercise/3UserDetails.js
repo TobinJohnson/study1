@@ -4,24 +4,24 @@ var data = [
     {"firstname":" Andrew ", "lastname":" Storm", "phone": "543729378245", "zip": " 7001 4", "age": 32, "id": "5 648"}
   ]
 
-  for(var i = 0; i <data.length; i++){
-    const name = data[i].firstname.trim()+" "+data[i].lastname.trim()
-    let phone=data[i].phone.trim().replace(/\D/g,'')
-    let age=data[i].age
-    let zip=data[i].zip.replace(/\D/g,'')
-    let id=data[i].id.replace(/\D/g,'')
+data.forEach((data)=>{  
+    const name = data.firstname.trim()+" "+data.lastname.trim()
+    let phone=data.phone.trim().replace(/\D/g,'')
+    let age=data.age
+    let zip=data.zip.replace(/\D/g,'')
+    let id=data.id.replace(/\D/g,'')
     if(phone.length>10){
         phone=phone.slice(0,10)}
         else if (phone.length<10){
-            phone=data[i].phone.padStart(10,0)
+            phone=data.phone.padStart(10,0)
     }
-    if(data[i].age>150 || data[i].age<0){
+    if(age>150 || age<0){
     age="NA"}
-    id="###"+id.slice(3)
+    id=id.slice(0,-3)+"###"
     console.log(`Name:${name}`)
     console.log(`Phone:${phone}`)
     console.log(`Zip:${zip}`)
     console.log(`Age:${age}`)
     console.log(`ID:${id}`)
     console.log(`\n`)
-  }
+  })

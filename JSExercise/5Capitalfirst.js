@@ -13,4 +13,4 @@ function capitalFirstLetterSentence(str) {
 
     }
 
-console.log(capitalFirstLetterSentence("hai hello you are the first person"));
+console.log(capitalFirstLetterSentence("hai hello you are the first person. test Hello world"));
