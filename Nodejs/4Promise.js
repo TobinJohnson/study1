@@ -1,27 +1,36 @@
-const x = 5
-const y = 10
+const x = 0
+const y = 1
 
 const add = (x, y) => {
-    return new Promise((resolve, reject) => {
-        resolve(x + y);
-    })
+    if (isNaN(x) || isNaN(y)) {
+        return Promise.reject(new Error("Value is not a number"))
+    }
+    return Promise.resolve(x + y);
 }
 const sub = (x, y) => {
-    return new Promise((resolve, reject) => {
-        resolve(x - y);
-    })
+    if (isNaN(x) || isNaN(y)) {
+        return Promise.reject(new Error("Value is not a number"))
+    }
+    return Promise.resolve(x - y);
 }
 const mul = (x, y) => {
+    if (isNaN(x) || isNaN(y)) {
+        return Promise.reject(new Error("Value is not a number"))
+    }
+
     return new Promise((resolve, reject) => {
         resolve(x * y);
     })
 }
 const div = (x, y) => {
-    return new Promise((resolove, reject) => {
-        if (y < 0) {
+    return new Promise((resolve, reject) => {
+        if (y === 0) {
             reject(new Error("Division by zero"))
         }
-        resolove(x / y);
+        if (isNaN(x) || isNaN(y)) {
+            reject(new Error("Value is not a number"))
+        }
+        resolve(x / y);
     })
 }
 
@@ -37,11 +46,11 @@ add(x, y).then(result1 => {
                     return add(sum1, result3).then(sum2 => {
                         return add(sum2, result4).then(finalResult => {
                             console.log(finalResult)
-                        }).catch(err=>console.log(err))
+                        }).catch(error => { console.error(error.message); });
                     })
                 })
-            })
-        })
-    })
+            }).catch(error => { console.error(error.message); });
+        }).catch(error => { console.error(error.message); });
+    }).catch(error => { console.error(error.message); });
 
-})
+}).catch(error => { console.error(error.message); });

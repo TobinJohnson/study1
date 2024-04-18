@@ -34,8 +34,8 @@ app.post('/image', upload.single('file'),(req,res)=>{
 app.get('/image', (req, res) => {res.sendFile(path.join(__dirname,'./ImageUpload.html'))})
 
 
-app.get('/image/:fileName',(req,res)=>{
-    const filePath=path.join(__dirname,'uploads',req.params.fileName)
+app.get('/image/:filename',(req,res)=>{
+    const filePath=path.join(__dirname,'uploads',req.params.filename)
     if(fs.existsSync(filePath)){
         res.contentType('image/jpeg')
         res.sendFile(filePath)}

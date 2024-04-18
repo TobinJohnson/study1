@@ -13,9 +13,9 @@ function sum(args) {
     //Iterate through the arguments
     for (var i = 2; i < args.length; i++) {
         var number = parseFloat(args[i]);
-        if (number == NaN) {
+        if (isNaN(number)) {
             console.log(`Invalid data recieved: ${args[i]}`);
-            return
+            return "Re-enter the values"
         }
         sum += number;
     }
